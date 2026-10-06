@@ -7,11 +7,8 @@ Uploaded and last edited by Yujie Shi (yujieshi@scripps.edu) Oct-06-2026.
 ## Introduction
 
 To analyze the dependency on NFAT5 of Neu5Ac-induced changes, we performed RNA-seq on three conditions: untreated scrambled control (Un_Scr), Neu5Ac-treated scrambled control (Neu_Scr), and Neu5Ac-treated Nfat5 knockdown (Neu_KD). Differential expression analysis was performed to calculate the log2 fold changes (LFC) and adjusted p values (padj) of all genes between Neu_Scr vs Un_Scr (Comparison 1, LFC_Scr, padj_Scr) and Neu_KD vs Un_Scr (Comparison 2, LFC_KD, padj_KD). Genes whose Neu5Ac-induced change is strongly NFAT5-dependent should show a clear reduction or loss of differential expression upon NFAT5 knockdown. In contrast, NFAT5-independent genes should maintain similar magnitude and significance in both comparisons, or can be in different directions due to other factors. With this rationale, we defined an Nfat5-Dependency Index for each gene as DI_gene = LFC_KD / LFC_Scr. This index quantifies how Nfat5 KD alters the magnitude and/or direction of Neu5Ac-induced changes. Differentially expressed genes (DEGs) from Comparison 1 (padj_Scr < 0.05 and |log2FC| > 0.25; n = 4,891) were classified as: Strongly NFAT5-dependent (0 ≤ DI < 0.68, or padj_KD ≥ 0.05), partially NFAT5-dependent (0.68 ≤ DI < 1), or NFAT5-independent (DI ≥ 1, or DI < 0 with padj_KD < 0.05). The threshold for strong or weak dependency (DI = 0.68) was empirically set based on the calculated DI of Nfat5 itself. 
+
 <img width="1977" height="1274" alt="fig3_rationale" src="https://github.com/user-attachments/assets/389339fa-ec64-498e-bec0-f7b42ebea80b" />
-
-## Requirements
-
-R packages: DESeq2, apeglm, dplyr, readr, tibble, tidyr, ggplot2, ggrepel, pheatmap, RColorBrewer.
 
 ## Scripts
 
@@ -20,6 +17,10 @@ R packages: DESeq2, apeglm, dplyr, readr, tibble, tidyr, ggplot2, ggrepel, pheat
 - `2_DI_analysis.R`: dependency index, classification, and plots. Run after `1_pre_process_DEG.R`.
 
 Log2 fold changes used for DI are apeglm-shrunken. Adjusted p values are from the unshrunken Wald test.
+
+## Requirements
+
+R packages: DESeq2, apeglm, dplyr, readr, tibble, tidyr, ggplot2, ggrepel, pheatmap, RColorBrewer.
 
 ## Data files
 
@@ -47,6 +48,3 @@ Log2 fold changes used for DI are apeglm-shrunken. Adjusted p values are from th
 - `session_info_1_pre_process_DEG.txt`
 - `session_info_2_DI_analysis.txt`
 
-
-
-  
